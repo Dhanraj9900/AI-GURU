@@ -103,3 +103,51 @@ The platform provides 1-Click login buttons in the Auth Modal for testing all ro
 - **Progress & Plans**: `GET /api/progress`, `GET /api/study-plan`, `POST /api/study-plan/task/toggle`
 - **Governance**: `GET /api/admin/research-jobs`, `POST /api/admin/research-jobs`, `POST /api/admin/content/:id/approve`
 - **System**: `GET /api/model-status`, `GET /api/health`
+
+## ⚡ Dual-Mode Architecture: Offline (No API Key) vs With Gemini API
+
+AI Guru is designed with a **fail-safe hybrid architecture** so the application operates seamlessly with or without external cloud API credentials.
+
+### Mode A: Zero-Cost / Offline Mode (Without Any API Key)
+When no API key is configured (`GEMINI_API_KEY` is omitted), the system executes through its built-in **Deterministic SymPy Solver, Pedagogical Curriculum Engine, and Educational Diagram Generator**. It costs ₹0 and never errors out.
+
+#### Sample Questions Supported in Mode A:
+1. **Mathematical Quadratic Equations (SymPy Engine)**:
+   - `solve x^2 - 5x + 6 = 0`
+   - `2x^2 - 4x - 6 = 0`
+   - *Result*: Calculates discriminant $D = b^2 - 4ac$, step-by-step Sridharacharya roots ($x_1, x_2$), and automatically renders an interactive quadratic parabola curve.
+2. **Computer Science Fundamentals**:
+   - `define the computer and explain their components`
+   - `what is cpu and memory`
+   - *Result*: Delivers structured architectural breakdown (Input, ALU/CU/Registers, RAM/ROM/Storage, Output) in Hindi or English.
+3. **Classical Physics & Dynamics**:
+   - `explain newton laws of motion` (or `न्यूटन के गति के नियम समझाइए`)
+   - *Result*: 3 Laws of Motion, everyday inertia examples, formula $F = m \cdot a$, and diagnostic numericals.
+4. **Interactive SVG Scientific Diagrams**:
+   - `explain convex lens optics diagram` (Renders 2F lens ray diagram)
+   - `explain pulley tension and mass` (Renders pulley dynamics & FBD)
+   - `explain dna double helix structure` (Renders molecular biology base pairs)
+   - `explain benzene resonance ring` (Renders chemical structure)
+   - `explain binary tree avl structure` (Renders self-balancing BST)
+5. **Direct Numerical Calculations**:
+   - `calculate 25 * 14 + 120 / 4`
+
+---
+
+### Mode B: Full Generative AI Mode (With Google Gemini API Key)
+When you want AI Guru to answer **any custom question across the entire universe of subjects** (e.g., NCERT textbooks, creative writing, JEE/NEET multi-step reasoning, essay generation), you connect a free Google Gemini API Key.
+
+#### How to Enable Mode B:
+1. Obtain a free API key from [Google AI Studio](https://aistudio.google.com/).
+2. Add the key:
+   - **Local Development**: In `.env`, set `GEMINI_API_KEY=AIzaSy...`
+   - **Vercel / Cloud**: In *Project Settings -> Environment Variables*, add:
+     - Name: `GEMINI_API_KEY`
+     - Value: `<Your Google API Key>`
+3. Redeploy or restart the server (`npm run dev`).
+
+#### Sample Questions Enabled in Mode B:
+- *"Explain the Krebs Cycle in cellular respiration with enzyme names."*
+- *"Derive the time dilation formula using Lorentz transformation for special relativity."*
+- *"Write an essay on the Indian Constitution's Preamble with key supreme court verdicts."*
+- *"Debug this C++ code for Dijkstra shortest path algorithm."*
