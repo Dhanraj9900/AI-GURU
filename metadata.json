@@ -1,0 +1,6 @@
+{
+  "name": "AI Guru - Inclusive Multilingual AI Learning Platform",
+  "description": "An intelligent, multilingual, and personalized AI learning platform for inclusive education across school, competitive exams, and higher education.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
